@@ -1,19 +1,19 @@
-# 🏦 Armenian Bank Voice AI Assistant
+# Armenian Voice AI Support Agent
 
-A real-time **voice-powered AI assistant** for Armenian banking information. Speak in Armenian to get details about loans (վարկեր), deposits (ավանդներ), and branch locations (մասնաճյուղեր) from three major banks: **ACBA Bank**, **Armeconombank (AEB)**, and **Fast Bank**.
+A real-time **voice-powered AI assistant** for Armenian banking information. Speak in Armenian to get details about loans, deposits, and branch locations from three major banks: **ACBA Bank**, **Armeconombank (AEB)**, and **Fast Bank**.
 
-Built with [LiveKit Agents](https://livekit.io/agents) for low-latency audio conversations, RAG for accurate facts, and browser-based UI for easy testing.
+Built with [LiveKit Agents](https://livekit.io/agents) for low-latency audio conversations and browser-based UI for easy testing.
 
-## ✨ Features
+## Features
 
-- **🎤 Full Armenian Voice Pipeline**: STT (Whisper via OpenAI/Groq + Silero VAD), LLM reasoning (GPT-4o-mini), TTS (OpenAI + optional free gTTS wrapper in tts_edge.py with custom Armenian formatting)
-- **🧠 Smart Retrieval Knowledge Base**: Scraped & merged bank data (JSON → context.txt), semantic retrieval with conversation state (remembers your bank/section)
-- **🤖 Stateful Conversations**: Handles clarifications (\"Which bank?\"), bank switches (with confirmation), follow-ups without repetition
-- **🌐 Simple Web UI**: One-click connect in browser, live transcripts, no app install needed
-- **🔄 Data Pipeline**: Selenium scrapers for fresh loans/deposits/branches data
-- **🐳 Local Docker Setup**: LiveKit server in one command
+- **Full Armenian Voice Pipeline**: STT (Whisper via OpenAI/Groq + Silero VAD), LLM reasoning (GPT-4o-mini), TTS (OpenAI)
+- **Smart Retrieval Knowledge Base**: Scraped & merged bank data (JSON → context.txt), semantic retrieval with conversation state (remembers your bank/section)
+- **Stateful Conversations**: Handles clarifications (\"Which bank?\"), bank switches (with confirmation), follow-ups without repetition
+- **Simple Web UI**: One-click connect in browser, live transcripts, no app install needed
+- **Data Pipeline**: Selenium scrapers for fresh loans/deposits/branches data
+- **Local Docker Setup**: LiveKit server in one command
 
-## 🚀 Quick Start (Local Development)
+## Quick Start (Local Development)
 
 ### Prerequisites
 - Python 3.10+
@@ -23,12 +23,12 @@ Built with [LiveKit Agents](https://livekit.io/agents) for low-latency audio con
 
 ```bash
 # 1. Clone & install
-git clone <repo> voice-agent-armenian
-cd voice-agent-armenian
+git clone <repo> 
+cd <repo>
 pip install -r requirements.txt
 
 # 2. Copy example env
-cp .env.example .env  # Edit with your API keys
+cp .env .env  # Edit with your API keys
 ```
 
 ### Run Everything
@@ -48,11 +48,10 @@ python agent.py
 
 **Example Queries** (in Armenian):
 - \"ԱԿԲԱ բանկի վարկերի տոկոսադրույքները\"
-- \"Ֆասթ բանկի ավանդներն ինչ են առաջարկում?\"
-- \"Արմէկոնոմբանկի մասնաճյուղ Երևանում որտեղ է?\"
-- Follow-up: \"Նրա կանխավճարը որքան է?\"
+- \"Ի՞նչ ավանդներ է առաջարկում Ֆասթ բանկը\"
+- \"Արմէկոնոմբանկի Երևանի մասնաճյուղերը\"
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Browser (index.html + LiveKit Client)
@@ -92,7 +91,7 @@ AGENT_TTS_VOICE=nova
 LIVEKIT_KEYS=devkey:secret
 ```
 
-## 📊 Update Bank Data
+## Update Bank Data
 
 Scrapers fetch live data from bank sites:
 
@@ -106,14 +105,9 @@ python scrapers/merger.py  # → ../bank_data/bank_context.txt
 **Supported Data**:
 - **Loans**: Rates, max amount, term, prepayment, currency
 - **Deposits**: Annual yield, term, min/max amount, currency
-- **Branches**: Address, phone, hours (by location tokens)
+- **Branches**: Address
 
-## 🔌 Deployment
-
-1. **LiveKit Cloud**: Replace local Docker with cloud URL/keys
-2. **Agent Scaling**: Run multiple `python agent.py` workers
-
-## 🏦 Supported Banks & Sections
+## Supported Banks & Sections
 
 | Bank | Loans | Deposits | Branches |
 |------|-------|----------|----------|
