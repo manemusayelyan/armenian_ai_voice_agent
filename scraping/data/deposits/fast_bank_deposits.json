@@ -1,0 +1,13 @@
+{
+  "bank": "Fast Bank",
+  "url": "https://www.fastbank.am",
+  "scraped_at": "2026-03-22",
+  "deposits": [
+    {
+      "type": "Համալրվող ավանդ",
+      "source_url": "https://www.fastbank.am/hy/individual/deposits",
+      "details": "Տարեկան եկամտաբերություն: 8-10,5%\nԺամկետ/օր: 31-550\nՆվազագույն գումար: 50,000 AMD\nԱրժույթ: AMD, USD, EUR, RUB",
+      "rates_table": ""
+    }
+  ]
+}

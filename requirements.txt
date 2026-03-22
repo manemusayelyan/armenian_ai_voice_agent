@@ -1,0 +1,13 @@
+livekit-agents[silero]>=0.8.0
+livekit-plugins-groq>=0.3.0
+livekit-plugins-silero>=0.6.0
+python-dotenv>=1.0.0
+livekit>=0.11.0
+edge-tts>=6.1.9
+click>=7.1,<8.2
+pydub>=0.25.1
+numpy>=1.24.0
+beautifulsoup4>=4.12.3,<5
+selenium>=4.20.0,<5
+webdriver-manager>=4.0.1,<5
+lxml>=5.1.0,<6

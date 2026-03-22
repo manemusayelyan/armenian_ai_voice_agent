@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armenian Bank AI</title>
+  <script src="https://cdn.jsdelivr.net/npm/livekit-client@2.5.0/dist/livekit-client.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    h1 { font-size: 1.8rem; color: #1a1a2e; margin-bottom: 6px; }
+    .subtitle { color: #555; margin-bottom: 30px; font-size: 0.95rem; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 30px;
+      width: 100%;
+      max-width: 540px;
+    }
+    .buttons { display: flex; gap: 12px; margin-bottom: 20px; }
+    button {
+      flex: 1;
+      padding: 13px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    #connectBtn    { background: #2d6a4f; color: white; }
+    #disconnectBtn { background: #c1121f; color: white; }
+    #status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    .label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    #transcript {
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 120px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #374151;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    #recognized {
+      background: #f8fafc;
+      border: 1px solid #dbe4f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      min-height: 72px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #334155;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 16px;
+    }
+    .banks {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏦 Armenian Bank AI Assistant</h1>
+  <p class="subtitle">ACBA Bank · AEB · Fast Bank</p>
+
+  <div class="card">
+    <div class="buttons">
+      <button id="connectBtn" onclick="connect()">🎤 Connect</button>
+      <button id="disconnectBtn" onclick="disconnect()" disabled>❌ Disconnect</button>
+    </div>
+    <div id="status">Not connected</div>
+    <div class="label">Recognized Speech</div>
+    <div id="recognized">Waiting for speech recognition...</div>
+    <div class="label">Conversation</div>
+    <div id="transcript">Connect and speak in Armenian...</div>
+    <div class="banks">Credits · Deposits · Branch Locations</div>
+  </div>
+
+  <script>
+    const LIVEKIT_URL  = "ws://127.0.0.1:7885";
+    const TOKEN_SERVER = "http://127.0.0.1:8080/token";
+    const ROOM_NAME    = "bank-support";
+
+    let room = null;
+    let lastUserTranscript = "";
+    let lastAgentTranscript = "";
+    const lastFinalTranscriptByParticipant = new Map();
+
+    function setStatus(msg, color = "#3730a3") {
+      const el = document.getElementById("status");
+      el.textContent = msg;
+      el.style.color = color;
+    }
+
+    function addTranscript(line) {
+      const el = document.getElementById("transcript");
+      if (el.textContent.startsWith("Connect")) el.textContent = "";
+      el.textContent += line + "\n";
+    }
+
+    function setRecognized(userText, agentText) {
+      const el = document.getElementById("recognized");
+      const userLine = userText ? `You: ${userText}` : "You: ...";
+      const agentLine = agentText ? `Agent: ${agentText}` : "Agent: ...";
+      el.textContent = `${userLine}\n${agentLine}`;
+    }
+
+    async function getToken() {
+      const identity = "user-" + Date.now();
+      const url = `${TOKEN_SERVER}?room=${ROOM_NAME}&identity=${identity}`;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error("Token server error: " + resp.status);
+      const data = await resp.json();
+      return data.token;
+    }
+
+    async function connect() {
+      setStatus("Getting token...", "#92400e");
+      try {
+        const token = await getToken();
+        setStatus("Connecting to LiveKit...", "#92400e");
+
+        room = new LivekitClient.Room({
+          adaptiveStream: false,
+          dynacast: false,
+          rtcConfig: {
+            iceServers: [
+              { urls: "stun:stun.l.google.com:19302" },
+              { urls: "stun:stun1.l.google.com:19302" },
+            ],
+            iceTransportPolicy: "all",
+          },
+        });
+
+        room.on(LivekitClient.RoomEvent.Connected, () => {
+          setStatus("✅ Connected — speak in Armenian", "#166534");
+          document.getElementById("connectBtn").disabled    = true;
+          document.getElementById("disconnectBtn").disabled = false;
+          addTranscript("[Connected to LiveKit room]");
+        });
+
+        room.on(LivekitClient.RoomEvent.ParticipantConnected, (participant) => {
+          addTranscript(`[Agent joined: ${participant.identity}]`);
+        });
+
+        room.on(LivekitClient.RoomEvent.TranscriptionReceived, (segments, participant) => {
+          const participantKey = participant?.identity || "unknown";
+          const isLocal = participant?.isLocal === true;
+
+          for (const segment of segments) {
+            const text = (segment.text || "").trim();
+            if (!text) continue;
+
+            if (isLocal) {
+              lastUserTranscript = text;
+            } else {
+              lastAgentTranscript = text;
+            }
+            setRecognized(lastUserTranscript, lastAgentTranscript);
+
+            if (!segment.final) continue;
+
+            const lastFinal = lastFinalTranscriptByParticipant.get(participantKey);
+            if (lastFinal === text) continue;
+            lastFinalTranscriptByParticipant.set(participantKey, text);
+            addTranscript(isLocal ? `[You] ${text}` : `[Agent] ${text}`);
+          }
+        });
+
+        room.on(LivekitClient.RoomEvent.TrackSubscribed, (track) => {
+          if (track.kind === LivekitClient.Track.Kind.Audio) {
+            const el = track.attach();
+            el.autoplay = true;
+            document.body.appendChild(el);
+            setStatus("✅ Agent audio ready", "#166534");
+            addTranscript("[Agent audio ready]");
+          }
+        });
+
+        room.on(LivekitClient.RoomEvent.Disconnected, (reason) => {
+          setStatus("Disconnected: " + (reason || ""), "#c1121f");
+          document.getElementById("connectBtn").disabled    = false;
+          document.getElementById("disconnectBtn").disabled = true;
+        });
+
+        room.on(LivekitClient.RoomEvent.ConnectionStateChanged, (state) => {
+          setStatus("State: " + state, "#92400e");
+          addTranscript("[State: " + state + "]");
+        });
+
+        await room.connect(LIVEKIT_URL, token, {
+          autoSubscribe: true,
+        });
+
+        await room.localParticipant.setMicrophoneEnabled(true);
+
+      } catch (err) {
+        setStatus("Error: " + err.message, "#c1121f");
+        addTranscript("[Error: " + err.message + "]");
+        console.error(err);
+      }
+    }
+
+    async function disconnect() {
+      if (room) {
+        await room.disconnect();
+        room = null;
+      }
+      lastUserTranscript = "";
+      lastAgentTranscript = "";
+      lastFinalTranscriptByParticipant.clear();
+      setRecognized("", "");
+      document.querySelectorAll("audio").forEach(el => el.remove());
+      document.getElementById("connectBtn").disabled    = false;
+      document.getElementById("disconnectBtn").disabled = true;
+      addTranscript("[Disconnected]");
+    }
+  </script>
+
+</body>
+</html>

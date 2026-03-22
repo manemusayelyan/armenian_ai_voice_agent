@@ -1,0 +1,104 @@
+{
+  "bank": "Fast Bank",
+  "url": "https://www.fastbank.am",
+  "scraped_at": "2026-03-22",
+  "credits": [
+    {
+      "type": "ԱԶԳԱՅԻՆ ՀԻՓՈԹԵՔԱՅԻՆ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/national-mordgage-loans-2-2",
+      "details": "Անվանական տոկոսադրույք: 13%\nԱռավելագույն գումար: 60․000․000 AMD\nՄինիմալ կանխավճար: 10%\nԱռավելագույն ժամկետ: 240 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ՎԱՐԿԵՐ ԵՐԻՏԱՍԱՐԴ ԸՆՏԱՆԻՔՆԵՐԻՆ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/loans-for-young-families",
+      "details": "Անվանական տոկոսադրույք: 7,3%/7,5%\nԱռավելագույն գումար: 27.750.000 AMD\nՄինիմալ կանխավճար: 10%\nԱռավելագույն ժամկետ: 240 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ՀԻՓՈԹԵՔԱՅԻՆ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/mortgage-loans-2",
+      "details": "Անվանական տոկոսադրույք: 13,5%\nԱռավելագույն գումար: 200.000.000 AMD\nՄինիմալ կանխավճար: 10%\nԱռավելագույն ժամկետ: 240 ամիս\nմարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ՀԻՓՈԹԵՔԱՅԻՆ ՎԱՐԿԵՐ ԱՐՑԱԽԻՑ ՏԵՂԱՀԱՆՎԱԾ ԸՆՏԱՆԻՔՆԵՐԻ ՀԱՄԱՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/mortgage-loans-for-families-displaced-from-artsakh",
+      "details": "Անվանական տոկոսադրույք: 10%\nԱռավելագույն գումար: 35.000.000 AMD\nՄինիմալ կանխավճար: 1%\nԱռավելագույն ժամկետ: 120 ամիս",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ԼԵՌՆԱՅԻՆ ՂԱՐԱԲԱՂԻՑ ԲՌՆԻ ՏԵՂԱՀԱՆՎԱԾ ԸՆՏԱՆԻՔՆԵՐԻ ԲՆԱԿԱՐԱՆԱՅԻՆ ԱՊԱՀՈՎՄԱՆ ՊԵՏԱԿԱՆ ԱՋԱԿՑՈՒԹՅԱՄԲ ՀԻՓՈԹԵՔԱՅԻՆ ՎԱՐԿ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/mortgage-loan-for-families-forcibly-displaced-from-nagorno-karabakh",
+      "details": "Անվանական տոկոսադրույք: 13%\nԱռավելագույն գումար: 55.000.000 AMD\nՄինիմալ կանխավճար: 0%\nԱռավելագույն ժամկետ: 120 ամիս\nմարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "Հիփոթեքային վարկեր «Սպայական և Ավագ ենթասպայական կազմերի զինծառայողների բնակապահովման» պետական աջակցության ծրագրով",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/mortgage-loans-for-housing-provision-of-military-servicemen",
+      "details": "Անվանական տոկոսադրույք (հաստատուն): 10,5%\nԱռավելագույն գումար: 25.650.000 AMD\nԱռավելագույն ժամկետ: 240 ամիս\nՄինիմալ կանխավճար սկսած: 10%",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ԱՌԵՎՏՐԱՅԻՆ ՏԱՐԱԾՔԻ ՀԻՓՈԹԵՔԱՅԻՆ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/mortgage/commercial-property-mortgage-loans-construction-refinancing",
+      "details": "Անվանական տոկոսադրույք: 10․75%-ից սկսած\nԱռավելագույն գումար: 200,000,000 ՀՀ դրամ\nՄինիմալ կանխավճար: 10-30%\nԱռավելագույն ժամկետ: 240 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Հիփոթեքային վարկ"
+    },
+    {
+      "type": "ՊԱՐՏԱՏՈՄՍԻ ԳՐԱՎՈՎ ՎԱՐԿ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/loan-secured-by-bonds",
+      "details": "Նվազագույն գումար: 1․000․000 AMD\nԱռավելագույն ժամկետ: 36 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում\nբայց ոչ ավել քան գրավադրվող պարտատոմսի ժամկետի ավարտ: 1,000,000 ՀՀ դրամ",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "ԱՆՇԱՐԺ ԳՈՒՅՔԻ ԳՐԱՎՈՎ ԱՊԱՀՈՎՎԱԾ ՎԱՐԿԵՐԻ ՎԵՐԱՖԻՆԱՆՍԱՎՈՐՈՒՄ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/refinancing-of-loans-secured-by-real-estate",
+      "details": "Վերաֆինանասավորվող վարկի տոկոսադրույք: 2%-ով ցածր, բայց ոչ պակաս քան 15%(հաստատուն)\nԱռավելագույն գումար: 80,000,000 AMD\nԱռավելագույն ժամկետ: 120 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "ԱՌԱՋՆԱՅԻՆ ՇՈՒԿԱՅԻՑ ԱՎՏՈՄԵՔԵՆԱՅԻ ՁԵՌՔԲԵՐՄԱՆ ՎԱՐԿ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/car-loan",
+      "details": "Անվանական տոկոսադրույք: 13․9%\nԱռավելագույն գումար: 30․000․000 AMD\nԱռավելագույն ժամկետ: 84 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում\nԱռաջնային շուկայից անհատական օգտագործման նպատակով ավտոմեքենայի ձեռքբերում: 18-65 տարեկան ռեզիդենտ ֆիզիկական անձինք*",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "ԱՆՇԱՐԺ ԳՈՒՅՔԻ ԳՐԱՎՈՎ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/loans-secured-by-on-real-estate-assets",
+      "details": "Անվանական տոկոսադրույք: 15,5%\nԱռավելագույն գումար: 100,000,000 AMD\nԱռավելագույն ժամկետ: 120 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "ԹԱՆԿԱՐԺԵՔ ԻՐԵՐԻ ԳՐԱՎՈՎ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/gold-loans",
+      "details": "Անվանական տոկոսադրույք: 21.5%\nԱռավելագույն գումար: 500,000,000 AMD\nԱռավելագույն ժամկետ: 60 ամիս\nՎարկի տրամադրում: 15 րոպեում",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "ԴՐԱՄԱԿԱՆ ՄԻՋՈՑՆԵՐԻ ԳՐԱՎՈՎ ՎԱՐԿԵՐ",
+      "source_url": "https://www.fastbank.am/hy/individual/loans/collateral/loans-secured-by-financial-instruments",
+      "details": "Ներդրված ավանդի տոկոսադրույքին: +3%\nՆվազագույն գումար: 100,000 AMD\nԱվանդի ժամկետով: 100.000 ՀՀ դրամ",
+      "rates_table": "",
+      "parent_type": "Գրավով վարկ"
+    },
+    {
+      "type": "Անգրավ վարկ",
+      "source_url": "https://www.fastbank.am/individual/loans/non-collateral",
+      "details": "Անվանական տոկոսադրույք: 16%\nԱռավելագույն գումար: 4.000.000 AMD\nԱռավելագույն ժամկետ: 60 ամիս\nՎաղաժամկետ մարման տույժ: Չի կիրառվում",
+      "rates_table": ""
+    }
+  ]
+}
