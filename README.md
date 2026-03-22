@@ -43,6 +43,8 @@ python token_server.py
 python agent.py
 
 # Terminal 4: Open in browser
+cd frontend 
+python -m http.server 3000  
 # Open frontend/index.html → Click \"Connect\" → Speak!
 ```
 
